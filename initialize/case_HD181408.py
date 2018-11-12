@@ -1,16 +1,17 @@
 # -*- coding: utf-8 -*-
-'测试热力图日期选择和查询功能，检查地图'
 __author__ = 'Hardy'
+'测试新增押金，及列表筛选功能'
+
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.ui import Select
-from selenium.webdriver.common.action_chains import ActionChains
 from selenium.common.exceptions import NoSuchElementException
 from selenium.common.exceptions import NoAlertPresentException
+from random import randrange
 import unittest, time, re
 
-class HotMap(unittest.TestCase):
+class CashPledge(unittest.TestCase):
     def setUp(self):
         self.driver = webdriver.Chrome()
         self.driver.implicitly_wait(30)
@@ -18,7 +19,7 @@ class HotMap(unittest.TestCase):
         self.verificationErrors = []
         self.accept_next_alert = True
     
-    def test_hot_map(self):
+    def test_cash_pledge(self):
         driver = self.driver
         driver.get("http://119.23.155.83:8090/")
         driver.find_element_by_id("phone").clear()
@@ -26,6 +27,7 @@ class HotMap(unittest.TestCase):
         driver.find_element_by_id("mima").clear()
         driver.find_element_by_id("mima").send_keys("123456")
         driver.find_element_by_id("login-btn").click()
+        driver.maximize_window()
         ######
         try:
             driver.find_element_by_xpath(u"//*[@id='modal_city'][@class='modal in']")
@@ -35,31 +37,24 @@ class HotMap(unittest.TestCase):
             else:print('No Alert Present!')
         except:print('Nothing happend.')
         ######
+        num = randrange(100,672)
+        input_name = 'AutoTestRandom' + str(num)
         driver.implicitly_wait(10)
-        driver.find_element_by_link_text(u"轨迹热力图").click()
-        driver.find_element_by_id("phone").click()
-        driver.find_element_by_id("phone").clear()
-        driver.find_element_by_id("phone").send_keys("18138819495")
-        driver.find_element_by_id("start-time").click()
-        driver.find_element_by_xpath("(.//*[normalize-space(text()) and normalize-space(.)='Clear'])[2]/following::th[2]").click()  #开始选择日期2018.06.01 6:00
-        driver.find_element_by_xpath(u"(.//*[normalize-space(text()) and normalize-space(.)='五月'])[1]/following::span[1]").click()
-        driver.find_element_by_xpath(u"(.//*[normalize-space(text()) and normalize-space(.)='六'])[1]/following::td[6]").click()
-        driver.find_element_by_xpath("(.//*[normalize-space(text()) and normalize-space(.)='Clear'])[1]/following::span[9]").click()
-        driver.find_element_by_xpath(u"(.//*[normalize-space(text()) and normalize-space(.)='© 2018 AutoNavi'])[1]/following::span[3]").click()
-        driver.find_element_by_id("end-time").click()
-        driver.find_element_by_xpath(u"(.//*[normalize-space(text()) and normalize-space(.)='六'])[2]/following::th[1]").click()  #开始选择截止日期
-        driver.find_element_by_xpath(u"(.//*[normalize-space(text()) and normalize-space(.)='查询'])").click()  #点击查询
+        driver.find_element_by_link_text(u"押金管理").click()
+        driver.find_element_by_xpath(u"(.//*[normalize-space(text()) and normalize-space(.)='创建押金'])[1]").click()  #(.//*[normalize-space(text()) and normalize-space(.)='创建押金'])/following::i/preceding::button[3]
+        driver.find_element_by_name("name").click()
+        driver.find_element_by_name("name").clear()
+        driver.find_element_by_name("name").send_keys(input_name)
+        driver.find_element_by_name("num").clear()
+        driver.find_element_by_name("num").send_keys("1")
+        driver.find_element_by_name("deposit").clear()
+        driver.find_element_by_name("deposit").send_keys("671")
+        driver.find_element_by_xpath(u"(.//*[normalize-space(text()) and normalize-space(.)='添加'])").click()
+        driver.find_element_by_xpath(u"(.//*[normalize-space(text()) and normalize-space(.)='全部'])[2]").click()  
+        #(.//*[normalize-space(text()) and normalize-space(.)='全部'])/following::span[contains(@class,'select2-selection__arrow')]  --contains()用法
+        driver.find_element_by_id("select2-select_groupcode-container").click()
         time.sleep(2)
-        driver.maximize_window()
-        origin = driver.find_element_by_xpath(u"(.//*[normalize-space(text()) and normalize-space(.)='恢复默认（查询最近7天）'])[1]/following::div[23]").click()  #尝试拖拽地图，如果地图存在，则可以拖拽
-        # target = driver.find_element_by_xpath()
-        js = "var q = document.documentElement.scrollTop=0"  #滚动到顶部
-        driver.execute_script(js)
-        time.sleep(3)
-        driver.find_element_by_xpath(u"(.//*[normalize-space(text()) and normalize-space(.)='恢复默认（查询最近7天）'])").click()
-        driver.find_element_by_xpath(u"(.//*[normalize-space(text()) and normalize-space(.)='查询'])").click()
-
-
+        driver.find_element_by_id("select2-select_groupcode-container").click()
         driver.find_element_by_xpath("(.//*[normalize-space(text()) and normalize-space(.)='|'])[1]/following::img[1]").click()
         driver.find_element_by_id("logout").click()
     
