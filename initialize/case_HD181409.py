@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
+'运营-中控，测试中控已绑数据、并查看已绑车辆的信息查询'
+
 __author__ = 'Hardy'
-'测试中控已绑数据、并查看已绑车辆的信息查询'
 
 from selenium import webdriver
 from selenium.webdriver.common.by import By

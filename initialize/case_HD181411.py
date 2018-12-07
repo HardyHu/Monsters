@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
+'运营-分布图，测试分布图，中控-scooter，及换电柜细点测试'
+
 __author__ = 'Hardy'
-'测试分布图，中控-scooter，及换电柜细点测试'
 '''涉及到js操作、切片无元素点控操作、句柄处理'''
 
 from selenium import webdriver

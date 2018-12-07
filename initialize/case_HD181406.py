@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
-'测试换电柜的禁用与最低电量设置'
+'运营-换电柜，测试换电柜的禁用与最低电量设置'
+
 __author__ = 'Hardy'
 
 from selenium import webdriver

@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
+'代理商-大额提交：提交涉及到的文本输入、字符判断、错误提示、文件操作、表单记录等功能'
+
 __author__ = 'Hardy'
-'套餐1814用例-代理商-大额申请提交功能'
-'提交涉及到的文本输入、字符判断、错误提示、文件操作、表单记录等功能'
+
 
 from selenium import webdriver
 from selenium.webdriver.common.by import By

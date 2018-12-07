@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
-'测试业务统计里选择日期，并有对应数据'
+'运营-业务统计，里选择日期，并有对应数据'
+
 __author__ = 'Hardy'
 ##Python3.7.0
 from selenium import webdriver

@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
+'运营-押金管理，测试新增押金，及列表筛选功能'
+
 __author__ = 'Hardy'
-'测试新增押金，及列表筛选功能'
 
 from selenium import webdriver
 from selenium.webdriver.common.by import By

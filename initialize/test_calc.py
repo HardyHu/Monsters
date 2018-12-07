@@ -1,4 +1,5 @@
 # -*- coding: utf8 -*-
+'用来单元测试类和方法'
 
 import unittest
 class TestclsforNewsuite(unittest.TestCase):

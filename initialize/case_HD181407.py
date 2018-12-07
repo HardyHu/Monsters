@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
-'测试热力图日期选择和查询功能，检查地图'
+'运营-轨迹热力图，测试热力图日期选择和查询功能，检查地图'
+
 __author__ = 'Hardy'
 from selenium import webdriver
 from selenium.webdriver.common.by import By
