@@ -1,5 +1,6 @@
 # -*- coding: utf8 -*-
-'套餐用例1814的新建不可重买套餐'
+'运营-套餐管理，列表有数据，新建套餐，且可创建成功'
+
 __author__ = 'Hardy'
 # import unittest
 from selenium import webdriver
@@ -19,16 +20,25 @@ class case181403TestCase(unittest.TestCase):
         self.accept_next_alert = True
     
     def test_taocanNorepeatingCreate(self):
-        driver = self.driver
+        ddriver = self.driver
         driver.get("http://119.23.155.83:8090/")
         driver.find_element_by_id("phone").clear()
         driver.find_element_by_id("phone").send_keys("18138819495")
         driver.find_element_by_id("mima").clear()
         driver.find_element_by_id("mima").send_keys("123456")
-
-        driver.find_element_by_id("checkbox-signup").click()  
-        driver.find_element_by_id("login-btn").click()  #登录进入后台
+        driver.find_element_by_id("login-btn").click()
+        driver.maximize_window()
+        ######
+        try:
+            driver.find_element_by_xpath(u"//*[@id='modal_city'][@class='modal in']")
+            element_w = driver.find_element_by_xpath(u"//*[@id='modal_city']/div/div/div[2]/button[text() = '深圳市']/../..//button")
+            if element_w.is_displayed():
+                element_w.click()
+            else:print('No Alert Present!')
+        except:print('Element is None~')
+        #####
         time.sleep(3)
+        driver.implicitly_wait(10)
         driver.find_element_by_link_text(u"套餐管理").click()
         time.sleep(2)
         driver.find_element_by_xpath(u"(.//*[normalize-space(text()) and normalize-space(.)='套餐管理'])[2]/following::button[1]").click()  #点击创建套餐啊

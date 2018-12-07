@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
-'测试由原图切换到数据视图，再退出，看看是否回到原图'
+'运营-运营统计，测试由原图切换到数据视图，再退出，看看是否回到原图'
+
 __author__ = 'Hardy'
+
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys

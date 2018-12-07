@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
+'运营-绑定电池-解绑操作，及领取新电池及发送验证码操作'
+
 __author__ = 'Hardy'
-'绑定电池-解绑操作，及领取新电池及发送验证码操作'
+
 
 from selenium import webdriver
 from selenium.webdriver.common.by import By
